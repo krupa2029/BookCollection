@@ -6,7 +6,7 @@ import { Navbar } from '../navbar/Navbar';
 export const Layout = () => {
   return (
     <div>
-    <Navbar></Navbar>
+    {/* <Navbar></Navbar> */}
     <MainBookPage></MainBookPage>
     </div>
   )
