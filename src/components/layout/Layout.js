@@ -1,13 +1,11 @@
 import React from 'react';
-import { BookList } from '../books/BookList';
-import { MainBookPage } from '../books/MainBookPage';
 import { Navbar } from '../navbar/Navbar';
 
-export const Layout = () => {
+export const Layout = (props) => {
   return (
     <div>
-    {/* <Navbar></Navbar> */}
-    <MainBookPage></MainBookPage>
+      <Navbar></Navbar>
+      <main>{props.children}</main>
     </div>
   )
 }

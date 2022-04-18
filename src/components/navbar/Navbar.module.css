@@ -1,5 +1,4 @@
 .header {
-    width: 100%;
     height: 5rem;
     display: flex;
     padding: 0 10%;
@@ -27,11 +26,11 @@
   
   .nav a {
     text-decoration: none;
-    color: #88dfdf;
+    color: #e6fcfc;
   }
   
   .nav a:hover,
   .nav a:active,
   .nav a.active {
-    color: #e6fcfc;
+    color: #88dfdf;
   }
