@@ -1,9 +1,28 @@
-import { Formik, useFormik } from "formik";
+import {
+  Formik,
+  Form,
+  useField,
+} from "formik";
 import React from "react";
 import classes from "./Login.module.css";
 import * as Yup from "yup";
 
 export const Login = () => {
+  const MyTextField = ({ label, ...props }) => {
+    const [field, meta, helpers] = useField(props);
+    return (
+      <div className={classes.control}>
+        <label>
+          {label}
+        </label>
+        <input {...field} {...props} />
+        {meta.touched && meta.error ? (
+          <div className={classes.error}>{meta.error}</div>
+        ) : null}
+      </div>
+    );
+  };
+
   const initialValues = {
     email: "",
     password: "",
@@ -19,52 +38,32 @@ export const Login = () => {
       ),
   });
 
-  const onSubmit = (values) => {
-    console.log("Form Data", values);
-  };
+  const onSubmit = (values, actions) => {
+   console.log(values); 
+   alert(JSON.stringify(values, null, 2));
+  }
+    
 
   return (
     <Formik
       validationSchema={validationSchema}
       onSubmit={onSubmit}
       initialValues={initialValues}
+      isInitialValid={false}
     >
-      {({
-        handleSubmit,
-        handleChange,
-        handleBlur,
-        values,
-        touched,
-        isValid,
-        errors,
-      }) => (
+      {(props) => (
         <section className={classes.auth}>
           <h3>Login</h3>
-          <form onSubmit={handleSubmit}>
-            <div className={classes.control}>
-              <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                onChange={handleChange}
-                value={values.email}
-              />
-            </div>
-            <div className={classes.control}>
-              <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                onChange={handleChange}
-                value={values.password}
-              />
-            </div>
+          <Form>
+            
+              <MyTextField name="email" type="email" label="Email" />
+              <MyTextField name="password" type="password" label="Password" />
+          
+           
             <div className={classes.actions}>
-              <button type="submit" disabled={!isValid}>Login</button>
+              <button type="submit"disabled={!props.isValid}>Login</button>
             </div>
-          </form>
+          </Form>
         </section>
       )}
     </Formik>
