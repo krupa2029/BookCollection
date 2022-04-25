@@ -2,6 +2,7 @@ import React from "react";
 import classes from "./Login.module.css";
 import * as Yup from "yup";
 import { Formik, Form, useField } from "formik";
+import { registerWithEmailAndPassword } from "../../firebase";
 
 export const Register = () => {
   const MyTextField = ({ label, ...props }) => {
@@ -36,10 +37,10 @@ export const Register = () => {
       .max(15, "should not exceed 15 characters")
       .required("Required!"),
 
-    email: Yup.string().email("Invalid Email Format!").required("Required!"),
+    email: Yup.string().email("Invalid Email Format!").required("Please enter Email!"),
 
     password: Yup.string()
-      .required("Please enter your password!")
+      .required("Please enter Password!")
       .matches(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
         "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
@@ -51,9 +52,9 @@ export const Register = () => {
     ),
   });
 
-  const onSubmit = (values, actions) => {
+  const onSubmit = async(values) => {
     console.log(values);
-    alert(JSON.stringify(values, null, 2));
+    registerWithEmailAndPassword(values);
   };
 
   return (

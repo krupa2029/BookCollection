@@ -6,6 +6,7 @@ import {
 import React from "react";
 import classes from "./Login.module.css";
 import * as Yup from "yup";
+import { logInWithEmailAndPassword } from "../../firebase";
 
 export const Login = () => {
   const MyTextField = ({ label, ...props }) => {
@@ -40,7 +41,8 @@ export const Login = () => {
 
   const onSubmit = (values, actions) => {
    console.log(values); 
-   alert(JSON.stringify(values, null, 2));
+   logInWithEmailAndPassword(values);
+  //  alert(JSON.stringify(values, null, 2));
   }
     
 
