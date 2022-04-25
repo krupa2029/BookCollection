@@ -1,21 +1,16 @@
-import {
-  Formik,
-  Form,
-  useField,
-} from "formik";
+import { Formik, Form, useField } from "formik";
 import React from "react";
 import classes from "./Login.module.css";
 import * as Yup from "yup";
 import { logInWithEmailAndPassword } from "../../firebase";
 
 export const Login = () => {
+  
   const MyTextField = ({ label, ...props }) => {
     const [field, meta, helpers] = useField(props);
     return (
       <div className={classes.control}>
-        <label>
-          {label}
-        </label>
+        <label>{label}</label>
         <input {...field} {...props} />
         {meta.touched && meta.error ? (
           <div className={classes.error}>{meta.error}</div>
@@ -57,13 +52,13 @@ export const Login = () => {
         <section className={classes.auth}>
           <h3>Login</h3>
           <Form>
-            
-              <MyTextField name="email" type="email" label="Email" />
-              <MyTextField name="password" type="password" label="Password" />
-          
-           
+            <MyTextField name="email" type="email" label="Email" />
+            <MyTextField name="password" type="password" label="Password" />
+
             <div className={classes.actions}>
-              <button type="submit"disabled={!props.isValid}>Login</button>
+              <button type="submit" disabled={!props.isValid}>
+                Login
+              </button>
             </div>
           </Form>
         </section>
