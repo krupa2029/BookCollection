@@ -10,15 +10,19 @@ import {
   signOut,
 } from "firebase/auth";
 import { getFirestore, collection, where, addDoc } from "firebase/firestore";
+import AuthContext from "./store/AuthContext";
+import { useContext } from "react";
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
+
 const logInWithEmailAndPassword = async (userDetail) => {
   try {
     await signInWithEmailAndPassword(auth, userDetail.email, userDetail.password);
     alert("Successfully Logged In");
+    
   } catch (err) {
     console.error(err);
     alert(err.message);

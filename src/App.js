@@ -4,11 +4,11 @@ import { MainBookPage } from "./components/books/MainBookPage";
 import { Layout } from "./components/layout/Layout";
 import { Login } from "./components/userAccount/Login";
 import { Register } from "./components/userAccount/Register";
+import { AuthProvider } from "./store/AuthContext";
 
 function App() {
   return (
     <div className="App">
-     
         <Layout>
           <Routes>
             <Route path="/" element={<MainBookPage />} />
@@ -16,7 +16,6 @@ function App() {
             <Route path="/register" element={<Register />} />
           </Routes>
         </Layout>
-    
     </div>
   );
 }
