@@ -13,9 +13,14 @@ export const Navbar = () => {
       <div className={classes.logo}>Bookiesh</div>
       <nav className={classes.nav}>
         <ul>
+       
+            <li>
+              <Link to="/">Search Books</Link>
+            </li>
+         
           {isLoggedIn && (
             <li>
-              <Link to="/">My Books</Link>
+              <Link to="/mybooks">My Books</Link>
             </li>
           )}
           {isLoggedIn && (

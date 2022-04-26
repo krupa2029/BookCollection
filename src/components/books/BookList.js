@@ -22,13 +22,12 @@ export const BookList = () => {
   ];
 
   return (
-    <div className="list_container">
-      <h1>BookList</h1>
-      <ul className={classes.list}>
+    <Fragment>
+      <ul className={classes["book-list"]}>
         {Books.map((book) => (
           <BookItem key={book.bookId} book={book} />
         ))}
       </ul>
-    </div>
+    </Fragment>
   );
 };
