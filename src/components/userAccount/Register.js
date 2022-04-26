@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import classes from "./Login.module.css";
 import * as Yup from "yup";
 import { Formik, Form, useField } from "formik";
-import { registerWithEmailAndPassword } from "../../firebase";
+import AuthContext from "../../store/AuthContext";
+
 
 export const Register = () => {
+  const authCtx = useContext(AuthContext);
+
   const MyTextField = ({ label, ...props }) => {
     const [field, meta, helpers] = useField(props);
     return (
@@ -54,7 +57,7 @@ export const Register = () => {
 
   const onSubmit = async(values) => {
     console.log(values);
-    registerWithEmailAndPassword(values);
+    authCtx.register(values);
   };
 
   return (

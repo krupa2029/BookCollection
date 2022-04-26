@@ -9,9 +9,9 @@ import { AuthProvider } from "./store/AuthContext";
 const container = document.getElementById("root");
 const root = createRoot(container);
 root.render(
-  <AuthProvider>
-    <BrowserRouter>
+  <BrowserRouter>
+    <AuthProvider>
       <App />
-    </BrowserRouter>
-  </AuthProvider>
+    </AuthProvider>
+  </BrowserRouter>
 );
